@@ -1,0 +1,1 @@
+create a folder 'preprocessed_images' under Dataset folder before running separate.py
