@@ -1,2 +1,3 @@
 # Ignore the preprocessed images directory
 Dataset/preprocessed_images/
+Dataset/new_preprocessed_images/
