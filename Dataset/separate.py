@@ -4,6 +4,7 @@ from glob import iglob
 import cv2
 from cv2.typing import MatLike
 from tqdm import tqdm
+import matplotlib.pyplot as plt
 
 
 class Color(Enum):
@@ -12,17 +13,15 @@ class Color(Enum):
     BLUE = 3
 
 
-def split_color(img: MatLike, color: Color) -> MatLike:
+def disable_color(img: MatLike, color: Color) -> MatLike:
+    img = img.copy()
     match color:
         case Color.RED:
-            img[:, :, 0] = 0
-            img[:, :, 1] = 0
+            img[:, :, 2] = 0
         case Color.GREEN:
-            img[:, :, 0] = 0
-            img[:, :, 2] = 0
-        case Color.BLUE:
             img[:, :, 1] = 0
-            img[:, :, 2] = 0
+        case Color.BLUE:
+            img[:, :, 0] = 0
 
     return img
 
@@ -32,14 +31,19 @@ def main():
         img = cv2.imread(file)
         save_file = file.replace("train_images", "preprocessed_images")
         cv2.imwrite(
-            save_file.replace(".jpg", "_red.jpg"), split_color(img.copy(), Color.RED)
+            save_file.replace(".jpg", "_red.jpg"), disable_color(img, Color.RED)
         )
         cv2.imwrite(
             save_file.replace(".jpg", "_green.jpg"),
-            split_color(img.copy(), Color.GREEN),
+            disable_color(img, Color.GREEN),
         )
         cv2.imwrite(
-            save_file.replace(".jpg", "_blue.jpg"), split_color(img.copy(), Color.BLUE)
+            save_file.replace(".jpg", "_blue.jpg"), disable_color(img, Color.BLUE)
+        )
+        plt.imsave(
+            save_file.replace(".jpg", "_nipy_spectral.jpg"),
+            img.copy()[:, :, 0],
+            cmap="nipy_spectral",
         )
 
 
