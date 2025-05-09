@@ -1,3 +1,4 @@
 # Ignore the preprocessed images directory
-Dataset/preprocessed_images/
-Dataset/split_preprocessed_images/
+Dataset/
+
+
