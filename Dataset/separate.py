@@ -1,5 +1,6 @@
 from enum import Enum
 from glob import iglob
+import os  # Added import
 
 import cv2
 from cv2.typing import MatLike
@@ -30,6 +31,10 @@ def main():
     for file in tqdm(iglob("./train_images/**/*.jpg", recursive=True)):
         img = cv2.imread(file)
         save_file = file.replace("train_images", "preprocessed_images")
+        
+        # Create the directory if it doesn't exist
+        os.makedirs(os.path.dirname(save_file), exist_ok=True)
+        
         cv2.imwrite(
             save_file.replace(".jpg", "_red.jpg"), disable_color(img, Color.RED)
         )
