@@ -28,7 +28,7 @@ def disable_color(img: MatLike, color: Color) -> MatLike:
 
 
 def main():
-    for file in tqdm(iglob(".Dataset/test_images/*.jpg", recursive=True)):
+    for file in tqdm(iglob("./Dataset/test_images/*.jpg", recursive=True)):
         img = cv2.imread(file)
         save_file = file.replace("Dataset/test_images", "Dataset/preprocessed_test_spectral_images")
         
