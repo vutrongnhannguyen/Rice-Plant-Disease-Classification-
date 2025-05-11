@@ -1,0 +1,12 @@
+image_id,label,variety,age,label_encoded
+100726.jpg,blast,AndraPonni,45,2
+100632.jpg,bacterial_leaf_blight,ADT45,45,0
+100464.jpg,tungro,ADT45,45,4
+103997.jpg,blast,ADT45,77,2
+107479.jpg,bacterial_leaf_streak,Zonal,70,1
+107734.jpg,bacterial_leaf_streak,Zonal,70,1
+105693.jpg,normal,RR,70,3
+100488.jpg,tungro,ADT45,45,4
+102630.jpg,blast,ADT45,77,2
+108623.jpg,normal,RR,70,3
+103051.jpg,bacterial_leaf_blight,ADT45,45,0
