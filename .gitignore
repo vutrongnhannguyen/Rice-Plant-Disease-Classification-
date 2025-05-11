@@ -1,2 +1,17 @@
 # Ignore the preprocessed images directory
 Dataset/
+training6/*.keras
+training7/*.keras
+training8/*.keras
+training9/*.keras
+training10/*.keras
+training11/*.keras
+training12/*.keras
+training13/*.keras
+training14/*.keras
+training15/*.keras
+training16/*.keras
+training17/*.keras
+training18/*.keras
+training19/*.keras
+training20/*.keras
