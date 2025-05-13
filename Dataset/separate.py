@@ -28,9 +28,9 @@ def disable_color(img: MatLike, color: Color) -> MatLike:
 
 
 def main():
-    for file in tqdm(iglob("./train_images/**/*.jpg", recursive=True)):
+    for file in tqdm(iglob("./merged_SMOT_train/**/*.jpg", recursive=True)):
         img = cv2.imread(file)
-        save_file = file.replace("train_images", "preprocessed_images")
+        save_file = file.replace("merged_SMOT_train", "preprocessed_images")
         
         os.makedirs(os.path.dirname(save_file), exist_ok=True)
         
