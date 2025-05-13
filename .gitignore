@@ -1,5 +1,3 @@
 # Ignore the preprocessed images directory
-Dataset/test_images/
-Dataset/train_images/
-Dataset/preprocessed_images/
+Dataset/
 Model/
