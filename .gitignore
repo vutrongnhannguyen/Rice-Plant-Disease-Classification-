@@ -4,3 +4,5 @@ Model/
 
 .direnv/
 .venv/
+
+*.keras
