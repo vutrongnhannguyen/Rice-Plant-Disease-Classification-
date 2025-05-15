@@ -1,3 +1,6 @@
 # Ignore the preprocessed images directory
 Dataset/
 Model/
+
+.direnv/
+.venv/
