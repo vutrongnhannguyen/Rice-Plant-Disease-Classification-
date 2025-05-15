@@ -1,7 +1,7 @@
 [project]
-name = "webapp"
+name = "ml-group-assignment"
 version = "0.1.0"
-description = "Add your description here"
+description = "Rice Plant Disease Classification"
 readme = "README.md"
 requires-python = "~=3.11.0"
 dependencies = [
