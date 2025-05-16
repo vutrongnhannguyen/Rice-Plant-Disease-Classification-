@@ -53,6 +53,27 @@ Here, uv ensure every run scripts has it dependencies resolve correctly and envi
 | 6        | `predict.py`                       | Predict test data using exported models                                    |
 | 7        | `webapp.py`                        | API endpoints for getting on-the-fly predictions                           |
 
+# Web Application
+
+This project packages a simple single-page application (SPA) to use with the 3 models, located in `app/`.
+
+With that, the application is bundled with [Vite](https://vite.dev/) and managed using `pnpm`.
+
+To build the web application for production, run
+
+```bash
+cd app
+pnpm i
+pnpm build
+```
+
+Then, run the [Flask](https://flask.palletsprojects.com/en/stable/) web server to serve the both API endpoint and previously built SPA.
+
+```bash
+cd ..
+uv run webapp.py
+```
+
 # References
 
 [Using uv with Jupyter](https://docs.astral.sh/uv/guides/integration/jupyter/)

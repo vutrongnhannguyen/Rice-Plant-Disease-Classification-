@@ -5,4 +5,8 @@ Model/
 .direnv/
 .venv/
 
+.ipynb_checkpoints/
+
 *.keras
+*.npy
+

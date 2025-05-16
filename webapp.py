@@ -11,18 +11,21 @@ from tensorflow.keras.models import load_model
 from tensorflow.keras.preprocessing.image import img_to_array, load_img
 from werkzeug.utils import secure_filename
 
+task1 = load_model("task1.keras")
 task2 = load_model("task2_4colors.keras")
 task3 = load_model("task3_3colors.keras")
 
 META_CSV = "Dataset/meta_train.csv"
 IMG_SIZE = (128, 128)
+TASK1_IMG_SIZE = (480, 640)
 UPLOAD_FOLDER = "./uploads"
 ALLOWED_EXTENSIONS = {"jpg"}
 
 meta_df = pd.read_csv(META_CSV)
 variety_labels = meta_df["variety"].unique()
+label_labels = np.load("task1_le.npy", allow_pickle=True)
 
-app = Flask(__name__)
+app = Flask(__name__, static_folder="app/dist", static_url_path="")
 app.config["UPLOAD_FOLDER"] = UPLOAD_FOLDER
 app.config["SECRET_KEY"] = "aoidhwioadawhodhuiwdh"
 
@@ -67,6 +70,17 @@ def image_transformation(image_id: str) -> str:
     )
 
     return filename
+
+
+def task1_predict(image_id: str) -> str:
+    img = cv2.imread(os.path.join(app.config["UPLOAD_FOLDER"], f"{image_id}.jpg"))
+    img = cv2.cvtColor(img, cv2.COLOR_BGR2RGB)
+    img = cv2.resize(img, TASK1_IMG_SIZE)
+    img = img / 255.0
+
+    prediction = task1.predict(np.expand_dims(img, axis=0))
+    predicted_index = np.argmax(prediction)
+    return label_labels[predicted_index]
 
 
 def task2_predict(image_id: str) -> str:
@@ -171,13 +185,22 @@ def upload_file():
     image_transformation(image_id)
     print("Transformed uploaded image into common formats")
 
+    task1_result = task1_predict(image_id)
+    print("Predicted values for task 1")
+
     task2_result = task2_predict(image_id)
     print("Predicted values for task 2")
 
     task3_result = task3_predict(image_id)
     print("Predicted values for task 3")
 
-    return {"variety": task2_result, "age": task3_result}
+    return {"label": task1_result, "variety": task2_result, "age": task3_result}
+
+
+@app.route("/", defaults={"path": ""})
+@app.route("/<path:path>")
+def catch_all(path):
+    return app.send_static_file("index.html")
 
 
 def main():
