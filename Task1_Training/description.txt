@@ -1,0 +1,5 @@
+All the important final training files located with in AlexNet folder with prefix "training6_".
+
+Although there were some more training history which has been lost due to pod corruption which can not be exported out. 
+However, we have done comparison and review its important to wether have to run it again. 
+Thus, some of the important files have been rerun while the other if not important is not.

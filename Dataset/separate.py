@@ -32,6 +32,7 @@ def main():
         img = cv2.imread(file)
         save_file = file.replace("merged_SMOT_train", "preprocessed_images")
         
+        # Create the directory if it doesn't exist
         os.makedirs(os.path.dirname(save_file), exist_ok=True)
         
         cv2.imwrite(
