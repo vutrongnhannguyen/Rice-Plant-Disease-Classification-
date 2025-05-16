@@ -26,6 +26,8 @@
 
           pkgs.nodejs
           pkgs.pnpm
+
+          pkgs.typst
         ];
 
         venvDir = "./.venv";

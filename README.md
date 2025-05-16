@@ -74,6 +74,18 @@ cd ..
 uv run webapp.py
 ```
 
+# Report
+
+Report resources and references are stored in `report/`, written with [Typst](https://typst.app/). To download as PDF, run
+
+```bash
+typst compile report/main.typ report.pdf
+```
+
 # References
 
-[Using uv with Jupyter](https://docs.astral.sh/uv/guides/integration/jupyter/)
+- [Using uv with Jupyter](https://docs.astral.sh/uv/guides/integration/jupyter/)
+- [Deploying a Static Site](https://vite.dev/guide/static-deploy)
+- [PDF - Typst Documentation](https://typst.app/docs/reference/pdf/)
+
+Additional references are cited in `report/references.bib`
