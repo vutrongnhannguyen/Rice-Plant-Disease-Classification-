@@ -4,5 +4,15 @@ import ui from "@nuxt/ui/vite";
 
 // https://vite.dev/config/
 export default defineConfig({
-  plugins: [vue(), ui()],
+  plugins: [
+    vue(),
+    ui({
+      ui: {
+        colors: {
+          primary: "red",
+          neutral: "neutral",
+        },
+      },
+    }),
+  ],
 });
